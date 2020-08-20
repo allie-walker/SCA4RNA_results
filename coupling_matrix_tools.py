@@ -43,7 +43,9 @@ def getCouplingInfo(pos1, pos2):
     
     Csca = readCouplingMatrix("Data/SCA_matrix.csv")
     coupling_values = getPairwiseCouplingValues(Csca, ats)
-    coupling = Csca[pos1][pos2]
+    index1 = ats.index(str(pos1))
+    index2 = ats.index(str(pos2))
+    coupling = Csca[index1][index2]
     index = coupling_values.index(coupling)
     if index == -1:
         return (coupling, -1)
