@@ -46,12 +46,13 @@ def getCouplingInfo(pos1, pos2):
     index1 = ats.index(str(pos1))
     index2 = ats.index(str(pos2))
     coupling = Csca[index1][index2]
-    index = coupling_values.rindex(coupling)
-    if index == -1:
+    first_index = coupling_values.index(coupling)
+    last_index = len(coupling_values) - 1 - coupling_values[::-1].index(coupling)
+    if first_index == -1:
         return (coupling, -1)
-    percentile = 100.0*index/len(coupling_values)
+    percentile = 100.0*(first_index+last_index)/(2*len(coupling_values))
     return (coupling, percentile)
 
-#position1 = 9
-#position2 = 10
+#position1 = 4
+#position2 = 11
 #(coupling, percentile) = getCouplingInfo(position1,position2)
